@@ -1,10 +1,13 @@
-import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import ToggleColorMode from './theme/ToggleColorMode';
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+    return (
+        <ToggleColorMode>
+            <Header/>
+        </ToggleColorMode>
+    );
 }
 
 export default App;
