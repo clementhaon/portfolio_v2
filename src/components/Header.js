@@ -57,7 +57,13 @@ function Header() {
     const { mode, toggleColorMode } = React.useContext(ColorModeContext);
 
     return (
-        <header>
+        <header style={{
+            position: "absolute",
+            top:0,
+            right: 0,
+            width: "100%",
+            height: "100%"
+        }}>
             <FormGroup sx={{display:"flex", alignItems:"flex-end"}}>
                 <FormControlLabel
                     control={

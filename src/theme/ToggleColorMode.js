@@ -17,6 +17,11 @@ export default function ToggleColorMode({ children }) {
                 palette: {
                     mode,
                 },
+                typography: {
+                    fontFamily: [
+                        'Tektur',
+                    ].join(','),
+                },
             }),
         [mode]
     );
