@@ -1,5 +1,5 @@
 import React from 'react';
-import {ColorModeContext} from '../theme/ToggleColorMode';
+import {ColorModeContext} from '../../theme/ToggleColorMode';
 import {FormControlLabel, FormGroup} from "@mui/material";
 import {styled} from '@mui/material/styles';
 import Switch from '@mui/material/Switch';

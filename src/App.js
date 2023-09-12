@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from './components/Header';
 import ToggleColorMode from './theme/ToggleColorMode';
-import Home from './components/Home'
+import Home from './pages/Home'
 
 function App() {
     return (

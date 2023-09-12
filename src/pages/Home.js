@@ -1,18 +1,25 @@
 import React, { useRef } from 'react';
 import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax';
+import './style/HomeStyle.css';
+import '../App.css';
 import avatar from '../assets/avatar.jpeg';
 import {Avatar} from "@mui/material";
-import Header from "./Header";
+import Header from "./components/Header";
+import Lights from "./components/Light";
 import {TypeAnimation} from "react-type-animation";
-import '../App.css';
-// Little helpers ...
+import { useTheme } from '@mui/material/styles';
+import Lottie from "lottie-react";
+import dataAnimation from '../assets/animation_lmgih2ab.json';
+
 const url = (name, wrap = false) =>
     `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
 
 export default function Home() {
-    const parallax = useRef(null)
+    const theme = useTheme();
+    const parallax = useRef(null);
+
     return (
-        <div style={{ width: '100%', height: '100%', background: '#253237' }}>
+        <div style={{ width: '100%', height: '100%', background: '#262626' }}>
             <Parallax ref={parallax} pages={3}>
                 <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
                 <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
@@ -21,14 +28,19 @@ export default function Home() {
                     offset={0}
                     speed={0}
                     factor={3}
-                    style={{
-                        backgroundImage: url('stars', true),
-                        backgroundSize: 'cover',
-                    }}
                 />
 
-                <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
-                    <img src={url('satellite4')} style={{ width: '15%', marginLeft: '70%' }} />
+                <ParallaxLayer offset={1.8} speed={-0.3} style={{ pointerEvents: 'none' }}>
+                    <Lottie
+                        animationData={dataAnimation}
+                        style={{
+                            height: "200px",
+                            transform: "translate(0, -50%) rotate(-0.03turn)",
+                            marginLeft: '55%',
+                            zIndex:9000
+                        }}
+                        loop={true}
+                    />
                 </ParallaxLayer>
 
                 <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
@@ -82,14 +94,13 @@ export default function Home() {
                 <ParallaxLayer
                     offset={0}
                     speed={0.1}
-                    style={{
-                        display: 'flex',
-                        flexDirection:'column',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                    <Header/>
+                    className={theme.palette.mode === 'light' ?'first-screen-light' : 'first-screen-dark'}
+                >
 
+
+
+                    <Header/>
+                    <Lights />
                     <Avatar
                         sx={{ width:"100%", height:'auto', aspectRatio:"1/1", maxHeight:250, maxWidth:250}}
                         src={avatar}
@@ -97,7 +108,7 @@ export default function Home() {
                     <TypeAnimation
                         style={{ whiteSpace: 'pre-line', height: '195px', fontSize: '3em' }}
                         sequence={[
-                            `Clément Haon\nDéveloppeur\nFullStack\nWeb et Mobile`, // actual line-break inside string literal also gets animated in new line, but ensure there are no leading spaces
+                            `Clément Haon Développeur\nFullStack Web Mobile`, // actual line-break inside string literal also gets animated in new line, but ensure there are no leading spaces
                             2000,
                             '',
                         ]}

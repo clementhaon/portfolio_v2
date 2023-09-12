@@ -5,7 +5,7 @@ import {CssBaseline} from "@mui/material";
 export const ColorModeContext = React.createContext();
 
 export default function ToggleColorMode({ children }) {
-    const [mode, setMode] = React.useState('light');
+    const [mode, setMode] = React.useState('dark');
 
     const toggleColorMode = () => {
         setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
@@ -16,6 +16,25 @@ export default function ToggleColorMode({ children }) {
             createTheme({
                 palette: {
                     mode,
+                    ...(mode === 'light'
+                        ? {
+                            background: {
+                                default: "#fff",
+                                paper: "#8d2d30",
+                            },
+                            light: {
+                                default: "",
+                            }
+                        }
+                        : {
+                            background: {
+                                default: "#262626",
+                                paper: "#89e586",
+                            },
+                            light: {
+                                default: "#89e586",
+                            }
+                        }),
                 },
                 typography: {
                     fontFamily: [
